@@ -1,4 +1,4 @@
-package com.fighter.joketoday.data
+package com.fighter.joketoday.data.model
 
 import com.google.gson.annotations.SerializedName
 
