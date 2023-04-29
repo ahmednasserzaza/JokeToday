@@ -12,5 +12,44 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_joke_setup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/shape_joke_setup"
+            android:padding="@dimen/spacing_normal"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/md_theme_light_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_joke_delivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/shape_joke_delivery"
+            android:textColor="@color/md_theme_light_secondary"
+            android:padding="@dimen/spacing_normal"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_joke_setup"
+            tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_generate_joke"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/another_joke"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintTop_toBottomOf="@+id/text_joke_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/spacing_normal"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
