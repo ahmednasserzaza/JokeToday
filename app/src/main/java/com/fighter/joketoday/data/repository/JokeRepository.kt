@@ -1,4 +1,4 @@
-package com.fighter.joketoday.data
+package com.fighter.joketoday.data.repository
 
 import com.fighter.joketoday.data.networking.API
 
