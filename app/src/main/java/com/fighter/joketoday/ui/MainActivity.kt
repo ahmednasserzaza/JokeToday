@@ -1,4 +1,4 @@
-package com.fighter.joketoday
+package com.fighter.joketoday.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
