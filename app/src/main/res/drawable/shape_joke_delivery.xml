@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--Shadow Layer-->
 
 
     <item android:right="10dp">
@@ -15,7 +14,6 @@
         </shape>
     </item>
 
-    <!--===============-->
 
 
     <item android:right="10dp">
@@ -26,7 +24,6 @@
         </shape>
     </item>
 
-    <!--===============-->
 
 
     <item android:right="10dp">
@@ -40,10 +37,8 @@
         </shape>
     </item>
 
-    <!--===============-->
 
 
-    <!--ForeGround-->
 
 
     <item android:right="10dp">

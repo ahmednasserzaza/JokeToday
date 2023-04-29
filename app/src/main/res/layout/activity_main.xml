@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.fighter.joketoday.ui.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,10 +19,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_normal"
-            android:background="@drawable/shape_joke_setup"
             android:padding="@dimen/spacing_normal"
             android:textSize="@dimen/text_medium"
-            android:textColor="@color/md_theme_light_secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +31,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_normal"
-            android:background="@drawable/shape_joke_delivery"
-            android:textColor="@color/md_theme_light_secondary"
             android:padding="@dimen/spacing_normal"
             android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,12 +42,11 @@
             android:id="@+id/button_generate_joke"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:layout_margin="@dimen/spacing_normal"
             android:text="@string/another_joke"
             android:textSize="@dimen/text_medium"
-            app:layout_constraintTop_toBottomOf="@+id/text_joke_delivery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/spacing_normal"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/text_joke_delivery" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

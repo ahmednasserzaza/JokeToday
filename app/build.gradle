@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.fighter.joketoday"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 }
@@ -38,7 +38,7 @@ android {
 dependencies {
 
     def retrofit = '2.9.0'
-    def okHttp = '4.10.0'
+    def okHttp = '5.0.0-alpha.11'
 
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -56,15 +56,15 @@ dependencies {
 
     // rxJava dependency
     implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit"
-    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.6'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
 
     // viewModel dependency
-    implementation"androidx.activity:activity-ktx:1.7.1"
-    implementation"androidx.fragment:fragment-ktx:1.5.7"
+    implementation "androidx.activity:activity-ktx:1.7.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
 
     // okHttp dependency
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.okhttp3:okhttp:$okHttp"
-    implementation"com.squareup.okhttp3:logging-interceptor:$okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
 }

@@ -21,19 +21,20 @@ class MainViewModel : ViewModel() {
     init {
         getRandomJoke()
     }
-    private fun getRandomJoke() {
+
+    fun getRandomJoke() {
         val randomJoke = repository.getRandomJoke()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(this::onGetRandomJoke , this::onError)
+            .subscribe(this::onGetRandomJoke, this::onError)
         compositeDisposable.add(randomJoke)
     }
 
-    private fun onGetRandomJoke(jokeResponse: JokeResponse){
-        Log.e(TAG ,"${jokeResponse.setup}" )
+    private fun onGetRandomJoke(jokeResponse: JokeResponse) {
         _randomJoke.postValue(jokeResponse)
     }
-    private fun onError(e:Throwable){
-        Log.e(TAG ,"${e.message}" )
+
+    private fun onError(e: Throwable) {
+        Log.e(TAG, "${e.message}")
     }
 }
