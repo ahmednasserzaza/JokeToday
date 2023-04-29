@@ -14,15 +14,17 @@ class MainViewModel : ViewModel() {
     private val TAG = "MainViewModel"
     private val compositeDisposable = CompositeDisposable()
     private val repository = JokeRepository()
+
+
     private val _randomJoke = MutableLiveData<JokeResponse>()
     val randomJoke: LiveData<JokeResponse>
         get() = _randomJoke
 
     init {
-        getRandomJoke()
+        getJoke()
     }
 
-    fun getRandomJoke() {
+    fun getJoke() {
         val randomJoke = repository.getRandomJoke()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -36,5 +38,10 @@ class MainViewModel : ViewModel() {
 
     private fun onError(e: Throwable) {
         Log.e(TAG, "${e.message}")
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 }
