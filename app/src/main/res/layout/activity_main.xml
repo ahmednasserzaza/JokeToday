@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fighter.joketoday.ui.MainViewModel" />
+            type="com.fighter.joketoday.ui.viewModel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

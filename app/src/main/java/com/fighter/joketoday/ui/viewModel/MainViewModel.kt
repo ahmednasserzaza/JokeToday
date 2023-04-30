@@ -1,4 +1,4 @@
-package com.fighter.joketoday.ui
+package com.fighter.joketoday.ui.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
