@@ -11,11 +11,9 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainViewModel : ViewModel() {
-    private val TAG = "MainViewModel"
-    private val compositeDisposable = CompositeDisposable()
+class MainViewModel : BaseViewModel() {
+    override val tag: String = this::class.java.simpleName
     private val repository = JokeRepository()
-
 
     private val _randomJoke = MutableLiveData<State<JokeResponse?>>()
     val randomJoke: LiveData<State<JokeResponse?>>
@@ -26,11 +24,12 @@ class MainViewModel : ViewModel() {
     }
 
     fun getJoke() {
-        val randomJoke = repository.getRandomJoke()
+        val randomJokeDisposable = repository.getRandomJoke()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onGetRandomJoke, ::onError)
-        compositeDisposable.add(randomJoke)
+
+        addToCompositeDisposable(randomJokeDisposable)
     }
 
     private fun onGetRandomJoke(jokeResponse: State<JokeResponse?>) {
@@ -38,11 +37,7 @@ class MainViewModel : ViewModel() {
     }
 
     private fun onError(e: Throwable) {
-        Log.e(TAG, "${e.message}")
+        log(e.message.toString())
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
-    }
 }
