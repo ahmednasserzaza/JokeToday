@@ -2,6 +2,8 @@ package com.fighter.joketoday.utils
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import com.fighter.joketoday.data.model.JokeResponse
+
 @BindingAdapter(value = ["app:showWhenLoading"])
 fun <T> showWhenLoading(view: View, state: State<T>?) {
     if (state is State.Loading) {

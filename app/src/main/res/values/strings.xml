@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">JokeToday</string>
     <string name="another_joke">Another Joke</string>
+    <string name="empty_joke_try_again">Empty Joke , Try Again</string>
 </resources>
