@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fighter.joketoday.data.repository.JokeRepository
 import com.fighter.joketoday.data.model.JokeResponse
+import com.fighter.joketoday.utils.State
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,8 +17,8 @@ class MainViewModel : ViewModel() {
     private val repository = JokeRepository()
 
 
-    private val _randomJoke = MutableLiveData<JokeResponse>()
-    val randomJoke: LiveData<JokeResponse>
+    private val _randomJoke = MutableLiveData<State<JokeResponse?>>()
+    val randomJoke: LiveData<State<JokeResponse?>>
         get() = _randomJoke
 
     init {
@@ -28,11 +29,11 @@ class MainViewModel : ViewModel() {
         val randomJoke = repository.getRandomJoke()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(this::onGetRandomJoke, this::onError)
+            .subscribe(::onGetRandomJoke, ::onError)
         compositeDisposable.add(randomJoke)
     }
 
-    private fun onGetRandomJoke(jokeResponse: JokeResponse) {
+    private fun onGetRandomJoke(jokeResponse: State<JokeResponse?>) {
         _randomJoke.postValue(jokeResponse)
     }
 

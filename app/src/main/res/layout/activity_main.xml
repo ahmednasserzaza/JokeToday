@@ -19,13 +19,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_normal"
-            android:textSize="@dimen/text_medium"
             android:background="@drawable/shape_joke_setup"
-            android:text="@{viewModel.randomJoke.setup}"
+            android:paddingVertical="@dimen/spacing_small"
+            android:paddingHorizontal="@dimen/spacing_large"            app:showWhenSuccess="@{viewModel.randomJoke}"
+            android:text="@{viewModel.randomJoke.toData().setup}"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/seed"
+            app:layout_constraintBottom_toTopOf="@+id/text_joke_delivery"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -33,11 +38,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_normal"
-            android:textSize="@dimen/text_medium"
             android:background="@drawable/shape_joke_delivery"
-            android:text="@{viewModel.randomJoke.delivery}"
+            android:paddingVertical="@dimen/spacing_small"
+            android:paddingHorizontal="@dimen/spacing_large"
+            app:showWhenSuccess="@{viewModel.randomJoke}"
+            android:text="@{viewModel.randomJoke.toData().delivery}"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/seed"
+            app:layout_constraintBottom_toTopOf="@+id/button_generate_joke"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_joke_setup"
             tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
@@ -47,11 +57,34 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_margin="@dimen/spacing_normal"
+            android:onClick="@{() -> viewModel.getJoke()}"
             android:text="@string/another_joke"
             android:textSize="@dimen/text_medium"
-            android:onClick="@{() -> viewModel.getJoke()}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_joke_delivery" />
+
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/button_generate_joke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenLoading="@{viewModel.randomJoke}" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_error"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_generate_joke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenError="@{viewModel.randomJoke}"
+            app:srcCompat="@drawable/ic_error" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
