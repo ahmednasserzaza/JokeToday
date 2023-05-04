@@ -23,6 +23,7 @@
             android:background="@drawable/shape_joke_setup"
             android:paddingHorizontal="@dimen/spacing_large"
             android:paddingVertical="@dimen/spacing_small"
+            app:showWhenSuccess="@{viewModel.randomJoke}"
             android:text="@{viewModel.randomJoke.toData().setup}"
             android:textColor="@color/seed"
             android:textSize="@dimen/text_medium"
@@ -32,7 +33,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            app:showWhenSuccess="@{viewModel.randomJoke}"
             tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -43,6 +43,7 @@
             android:background="@drawable/shape_joke_delivery"
             android:paddingHorizontal="@dimen/spacing_large"
             android:paddingVertical="@dimen/spacing_small"
+            app:showWhenSuccess="@{viewModel.randomJoke}"
             android:text="@{viewModel.randomJoke.toData().delivery}"
             android:textColor="@color/seed"
             android:textSize="@dimen/text_medium"
@@ -51,7 +52,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_joke_setup"
-            app:showWhenSuccess="@{viewModel.randomJoke}"
             tools:text="Why did the chicken cross the road, roll in the mud and cross the road again?" />
 
         <com.google.android.material.button.MaterialButton
