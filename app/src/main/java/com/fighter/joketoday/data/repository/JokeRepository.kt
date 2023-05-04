@@ -8,11 +8,11 @@ import retrofit2.Response
 
 class JokeRepository {
     fun getRandomJoke(): Observable<State<JokeResponse?>> {
-        return wrapWithSingle(API.jokeService::getRandomJoke)
+        return wrapWithObservable(API.jokeService.getRandomJoke())
     }
 
-    private fun <T> wrapWithSingle(function: () -> Observable<Response<T>>): Observable<State<T?>> {
-        return function.invoke()
+    private fun <T> wrapWithObservable(response: Observable<Response<T>>): Observable<State<T?>> {
+        return response
             .map {
                 if (it.isSuccessful) {
                     State.Success(it.body())
@@ -20,7 +20,6 @@ class JokeRepository {
                     State.Error(it.message())
                 }
             }
-            .onErrorReturn { State.Error(it.message.toString()) }
             .startWithItem(State.Loading)
     }
 }
