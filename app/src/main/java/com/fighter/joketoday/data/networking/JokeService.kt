@@ -9,5 +9,5 @@ import retrofit2.http.GET
 
 interface JokeService {
     @GET("joke/Any")
-    fun getRandomJoke(): Observable<Response<JokeResponse>>
+    suspend fun getRandomJoke(): Response<JokeResponse>
 }
