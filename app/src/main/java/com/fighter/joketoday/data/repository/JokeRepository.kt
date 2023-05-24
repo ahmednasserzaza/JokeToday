@@ -4,22 +4,31 @@ import com.fighter.joketoday.data.model.JokeResponse
 import com.fighter.joketoday.data.networking.API
 import com.fighter.joketoday.utils.State
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.Response
+import java.lang.Exception
 
 class JokeRepository {
-    fun getRandomJoke(): Observable<State<JokeResponse?>> {
-        return wrapWithObservable(API.jokeService.getRandomJoke())
+    fun getRandomJoke(): Flow<State<JokeResponse?>> {
+        return wrapWithFlow(API.jokeService::getRandomJoke)
     }
 
-    private fun <T> wrapWithObservable(response: Observable<Response<T>>): Observable<State<T?>> {
-        return response
-            .map {
-                if (it.isSuccessful) {
-                    State.Success(it.body())
+    private fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> {
+        return flow {
+            emit(State.Loading)
+            try {
+                val result = function()
+                if (result.isSuccessful) {
+                    emit(State.Success(result.body()))
                 } else {
-                    State.Error(it.message())
+                    emit(State.Error(result.message()))
                 }
+            } catch (e: Exception) {
+                emit(State.Error(e.message.toString()))
             }
-            .startWithItem(State.Loading)
+
+        }
+
     }
 }
