@@ -6,9 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.fighter.joketoday.data.model.JokeResponse
 import com.fighter.joketoday.data.repository.JokeRepository
 import com.fighter.joketoday.utils.State
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainViewModel : BaseViewModel() {
