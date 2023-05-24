@@ -3,11 +3,9 @@ package com.fighter.joketoday.data.repository
 import com.fighter.joketoday.data.model.JokeResponse
 import com.fighter.joketoday.data.networking.API
 import com.fighter.joketoday.utils.State
-import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
-import java.lang.Exception
 
 class JokeRepository {
     fun getRandomJoke(): Flow<State<JokeResponse?>> {
